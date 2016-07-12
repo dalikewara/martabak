@@ -1,0 +1,97 @@
+#head-post
+{
+    /*background: rgb(227, 227, 227);*/
+    /*box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);*/
+    margin: 0;
+    padding: 0 0 0;
+    color: rgb(80, 80, 80);
+}
+
+#post-attribute
+{
+    background: rgb(255, 255, 255);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    padding: 0 0 20px;
+}
+
+#post-title, #post-slug
+{
+    height: auto;
+    border: none;
+    color: rgb(21, 112, 28);
+    background: transparent;
+}
+
+#post-title
+{
+    margin: 10px 0 0;
+    font-size: 22px;
+    font-family: serif;
+}
+
+#post-slug
+{
+    margin: 15px 0 0;
+    font-size: 14px;
+}
+
+#button-layout
+{
+    float: right;
+    margin: 20px 0;
+}
+
+#custom-date
+{
+    opacity: 0.4;
+    background: rgb(217, 217, 217);
+    padding: 5%;
+    border-radius: 5px;
+    border: 1px solid rgb(196, 196, 196);
+}
+
+#alert
+{
+    position: fixed;
+    top: 60px;
+    width : auto;
+    left: 0;
+}
+
+.attribute
+{
+    padding: 10px;
+}
+
+.media-box
+{
+    width: 100%;
+    height: 250px;
+    background: rgb(233, 233, 233);
+    border-radius: 5px;
+    padding: 3%;
+    border: 1px solid rgb(196, 196, 196);
+    overflow: auto;
+}
+
+.attr-box
+{
+    width: 100%;
+    height: 100px;
+    background: rgb(233, 233, 233);
+    overflow: auto;
+    padding: 3%;
+    border-radius: 5px;
+    border: 1px solid rgb(196, 196, 196);
+}
+
+.disable-pointer-events
+{
+    pointer-events: none;
+}
+
+.hide
+{
+    display: none;
+}
