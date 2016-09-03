@@ -1,0 +1,23 @@
+METHOD=GET ___ @_@ ___ URI=/ ___ @_@ ___ ARGS=controller:backend\UserRequestController method:home
+METHOD=GET ___ @_@ ___ URI=/login ___ @_@ ___ ARGS=controller:backend\Auth method:login
+METHOD=GET ___ @_@ ___ URI=/logout ___ @_@ ___ ARGS=controller:backend\Auth method:logout
+METHOD=POST ___ @_@ ___ URI=/backend/process/validation/{type} ___ @_@ ___ ARGS=controller:backend\Auth method:validation
+METHOD=GET ___ @_@ ___ URI=/backend ___ @_@ ___ ARGS=controller:backend\Dashboard method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/home-builder ___ @_@ ___ ARGS=controller:backend\HomeBuilder method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/create/content ___ @_@ ___ ARGS=controller:backend\Create method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/edit/content/{title}/{slug} ___ @_@ ___ ARGS=controller:backend\EditContent method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/contents ___ @_@ ___ ARGS=controller:backend\Content method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/settings ___ @_@ ___ ARGS=controller:backend\Setting method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/routes ___ @_@ ___ ARGS=controller:backend\Route method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/layouts ___ @_@ ___ ARGS=controller:backend\Layout method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/controllers ___ @_@ ___ ARGS=controller:backend\ControllerGenerator method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/metas ___ @_@ ___ ARGS=controller:backend\Meta method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/informations ___ @_@ ___ ARGS=controller:backend\Information method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/realtime/preview/{prefix}/{name} ___ @_@ ___ ARGS=controller:backend\Realtime method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/extended/all/{type} ___ @_@ ___ ARGS=controller:backend\Extended\All method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/extended/sort/properties/{type} ___ @_@ ___ ARGS=controller:backend\Extended\Sort method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/extended/insert/layouts ___ @_@ ___ ARGS=controller:backend\Extended\InsertLayout method:index ___ @_@ ___ :::auth:::
+METHOD=GET ___ @_@ ___ URI=/backend/extended/routes/prefix ___ @_@ ___ ARGS=controller:backend\Extended\RoutePrefix method:index ___ @_@ ___ :::auth:::
+METHOD=POST ___ @_@ ___ URI=/backend/process/create/{type} ___ @_@ ___ ARGS=controller:backend\process\Create method:index ___ @_@ ___ :::auth:::
+METHOD=POST ___ @_@ ___ URI=/backend/process/delete/{type} ___ @_@ ___ ARGS=controller:backend\process\Delete method:index ___ @_@ ___ :::auth:::
+METHOD=POST ___ @_@ ___ URI=/backend/process/edit/{type} ___ @_@ ___ ARGS=controller:backend\process\Edit method:index ___ @_@ ___ :::auth:::
