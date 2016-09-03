@@ -1,6 +1,6 @@
 # Introduction
 
-[Martabak](http://dalikewara.com/project/janggelan) is not a Content Management System (CMS) application like WordPress, Joomla, Drupal, etc. [Martabak](http://dalikewara.com/project/janggelan) runs for Website Manager that helping you to build your own Website/Application by doing something unexpected such as coding.
+[Martabak](http://dalikewara.com/project/martabak) is not a Content Management System (CMS) application like WordPress, Joomla, Drupal, etc. [Martabak](http://dalikewara.com/project/martabak) runs for Website Manager that helping you to build your own Website/Application by doing something unexpected such as coding.
 
 ### Features (0.0.1 Z Rev 2)
 
@@ -63,8 +63,8 @@ Optional instructions.
 
 ### Powered By
 
-[Martabak](http://dalikewara.com/project/janggelan) is powered by [Janggelan](http://dalikewara.com/project/janggelan), a simple and unexpected PHP Framework.
+[Martabak](http://dalikewara.com/project/martabak) is powered by [Janggelan](http://dalikewara.com/project/janggelan), a simple and unexpected PHP Framework.
 
 ### License
 
-[Martabak](http://dalikewara.com/project/janggelan) is an open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+[Martabak](http://dalikewara.com/project/martabak) is an open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
