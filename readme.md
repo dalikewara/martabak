@@ -1,8 +1,6 @@
 # Introduction
 
-Martabak is not a Content Management System (CMS) application like WordPress, Joomla,
-Drupal, etc. Martabak runs for Website Manager that helping you to build your own Website/Application
-by doing something unexpected such as coding.
+[Martabak](http://dalikewara.com/project/janggelan) is not a Content Management System (CMS) application like WordPress, Joomla, Drupal, etc. [Martabak](http://dalikewara.com/project/janggelan) runs for Website Manager that helping you to build your own Website/Application by doing something unexpected such as coding.
 
 ### Features (0.0.1 Z Rev 2)
 
@@ -55,12 +53,12 @@ Optional instructions.
 
 ### Author
 
-Dali Kewara <dalikewara@windowslive.com>
+[Dali Kewara](http://dalikewara.com) [<dalikewara@windowslive.com>](mailto:dalikewara@windowslice.com)
 
 ### Powered By
 
-Martabak is powered by Janggelan, a simple and unexpected PHP Framework.
+[Martabak](http://dalikewara.com/project/janggelan) is powered by [Janggelan](http://dalikewara.com/project/janggelan), a simple and unexpected PHP Framework.
 
 ### License
 
-Martabak is an open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+[Martabak](http://dalikewara.com/project/janggelan) is an open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

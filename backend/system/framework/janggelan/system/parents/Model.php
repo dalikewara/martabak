@@ -54,6 +54,7 @@ class Model extends Artist
         // Anda bisa melakukannya secara manual dengan menggunakan fungsi 'Open()'.
         $this->dbProperties = new DatabasePropertyController;
 
-        $this->dbProperties->autoConnect() ? $this->Open() : FALSE;
+        // $this->dbProperties->autoConnect() ? $this->Open() : FALSE;
+        $this->dbProperties->autoConnect() ? FALSE : FALSE;
     }
 }

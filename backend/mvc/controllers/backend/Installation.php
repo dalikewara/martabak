@@ -156,12 +156,13 @@ class Installation extends \system\parents\Controller
             (count($this->model->informations->Clause($this->sqlGenerator->where(
                 'id', ':id'))->BindParam(['id' => 1])->Result()) > 0) ? (
                 $this->model->informations->Update(['id' => 1, 'version' => '0.0.1',
-                'codename' => 'Z', 'released_at' => 'Friday, 02/09/2016', 'author' =>
-                '<a href="http://dalikewara.com">Dali Kewara</a>', 'license' => 'Apache'],
+                'codename' => 'Z', 'released_at' => 'Saturday, 03/09/2016', 'author' =>
+                '<a href="http://dalikewara.com">Dali Kewara</a>', 'license' =>
+                '<a href="https://opensource.org/licenses/MIT">MIT License</a>'],
                 ['id' => 1])) : ($this->model->informations->Insert(['id' => 1,
-                'version' => '0.0.1', 'codename' => 'Z', 'released_at' => 'Friday, 02/09/2016',
+                'version' => '0.0.1', 'codename' => 'Z', 'released_at' => 'Saturday, 03/09/2016',
                 'author' => '<a href="http://dalikewara.com">Dali Kewara</a>',
-                'license' => 'Apache']));
+                'license' => '<a href="https://opensource.org/licenses/MIT">MIT License</a>']));
         // INSTALLATION FINISH
         // If the process has done without errors, please follow the next instructions appeared.
         die('

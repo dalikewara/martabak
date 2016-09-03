@@ -51,6 +51,8 @@ class Model extends Blueprint
     */
     public function Create()
     {
+        $this->Open();
+
         $x          = 0;
         $createData = '';
 
@@ -64,6 +66,7 @@ class Model extends Blueprint
         $createData = rtrim($createData, ',');
 
         $this->dbConnect->exec($this->dbProperties->createProperty($this->smartTable, $createData));
+        $this->Die();
     }
 
     /**
@@ -77,6 +80,8 @@ class Model extends Blueprint
     */
     public function Insert(array $data)
     {
+        $this->Open();
+
         $data       = is_array($data) ? $data : array();
         $columnName = implode(', ', array_keys($data));
         $value      = implode(", ", array_keys(array_combine(array_map(function($a){return ":$a";},
@@ -87,6 +92,7 @@ class Model extends Blueprint
         );
 
         $prepare->execute($bindParams);
+        $this->Die();
     }
 
     /**
@@ -101,6 +107,8 @@ class Model extends Blueprint
     */
     public function Update(array $value, array $clause)
     {
+        $this->Open();
+
         $value         = is_array($value) ? $value : array();
         $clause        = is_array($clause) ? $clause : array();
         $paramValue    = array_combine(array_map(function($a){return "{$a}value";},
@@ -118,6 +126,7 @@ class Model extends Blueprint
             $this->smartTable, $prepareValue,$prepareClause));
 
         $prepare->execute($bindParams);
+        $this->Die();
     }
 
     /**
@@ -132,6 +141,8 @@ class Model extends Blueprint
     */
     public function Delete($data = [])
     {
+        $this->Open();
+
         $data = is_array($data) ? $data : array();
 
         if(count($data) > 0)
@@ -150,6 +161,8 @@ class Model extends Blueprint
                 $this->dbProperties->deleteProperty($this->smartTable, '', TRUE)
             );
         }
+
+        $this->Die();
     }
 
     /**
@@ -163,6 +176,8 @@ class Model extends Blueprint
     */
     public function All()
     {
+        $this->Open();
+
         $x = 0;
 
         // Di bawah ini merupakan proses untuk membuat properti metode query 'SELECT'.
@@ -235,6 +250,8 @@ class Model extends Blueprint
         {
             $array = [];
         }
+
+        $this->Die();
 
         return $array;
     }
