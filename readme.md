@@ -14,6 +14,12 @@
 
 - Text editor with CodeMirror to generate syntax highlight. So, you can enjoy in coding.
 
+### System Requirements
+
+- PHP 7
+
+- PDO PHP Extension
+
 ### How To Install
 
 Martabak can be difficult to installed. So, please follow the instructions bellow carefully to can install Martabak.
