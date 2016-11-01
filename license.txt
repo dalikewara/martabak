@@ -1,3 +1,6 @@
+Martabak: A page system and self-hosted website manager
+-------------------------------------------------------------------------------
+
 The MIT License (MIT)
 
 Copyright (c) 2016 Dali Kewara <dalikewara@windowslive.com>

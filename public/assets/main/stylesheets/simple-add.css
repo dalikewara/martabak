@@ -1,0 +1,16 @@
+.add-box {
+    width: 450px;
+    margin: 20px auto;
+}
+@media only screen and (max-width: 600px)
+{
+    .add-box {
+        margin: 56px auto;
+    }
+}
+@media only screen and (max-width: 500px)
+{
+    .add-box {
+        width: 100%;
+    }
+}

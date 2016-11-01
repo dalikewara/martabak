@@ -1,0 +1,50 @@
+body {
+    font-family: "Raleway", sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    font-size: 14px;
+    color: rgb(100, 100, 100);
+}
+a:link {
+    text-decoration: none;
+    color: rgb(30, 88, 199);
+}
+a:visited {
+    color: rgb(30, 88, 199);
+}
+a:hover {
+    color: rgb(12, 57, 143);
+    text-decoration: underline;
+}
+a:active {
+    color: rgb(30, 88, 199);
+}
+#parent {
+    width: 100%;
+}
+#child {
+    width: 1000px;
+    margin: auto;
+    display: flex;
+    padding-top: 40px;
+}
+@media only screen and (max-width: 1050px)
+{
+    #child {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 600px)
+{
+    #child {
+        display: block;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+}
+@media only screen and (max-width: 400px)
+{
+    #child {
+        margin-top: -40px;
+    }
+}

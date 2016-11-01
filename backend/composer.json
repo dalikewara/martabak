@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "psr-4": {
+            "controller\\": "../handler/controllers",
+            "model\\": "../handler/models",
+            "glob\\": "global",
+            "framework\\": "framework/janggelan/system/src",
+            "tool\\": "../tools"
+        }
+    }
+}
