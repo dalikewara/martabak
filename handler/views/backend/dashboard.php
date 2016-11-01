@@ -317,20 +317,17 @@
             ajax(Petis(this).attr('valUrl'), Petis('#content-quick-edit-form-'
                 + id).getFormData(), index + ' has been edited succesfully!', false, true, function()
                 {
-                    switch(index)
-                    {
-                        case 'Page':
-                            var title = Petis('#content-quick-edit-input-title-' + id).val;
+                    var title = Petis('#content-quick-edit-input-title-' + id).val;
 
-                            Petis('#content-main-title-' + id).inner(title);
-                            Petis('#content-main-title-' + id).attr('href', Petis(
-                                '#content-quick-edit-input-slug-' + id).val);
-                            Petis('#content-main-description-' + id).inner(Petis(
-                                '#content-quick-edit-input-description-' + id).val);
-                            Petis('#content-main-last-edited-' + id).inner('Last edited: recent');
-                            Petis('#content-delete-confirm-' + id).attr('valTitle', title);
-                            break;
-                    }
+                    Petis('#content-main-title-' + id).inner(title);
+                    Petis('#content-main-title-' + id).attr('href', Petis(
+                        '#content-quick-edit-input-slug-' + id).val);
+                    Petis('#content-main-description-' + id).inner(Petis(
+                        '#content-quick-edit-input-description-' + id).val);
+                    Petis('#content-main-comment-' + id).inner(Petis(
+                        '#content-quick-edit-input-comment-' + id).val);
+                    Petis('#content-main-last-edited-' + id).inner('Last edited: recent');
+                    Petis('#content-delete-confirm-' + id).attr('valTitle', title);
                 });
         });
 

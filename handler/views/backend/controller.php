@@ -2,7 +2,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php require_once $paths->get('layouts') . '/metas.php'; ?>
+
+
+
+        <?php require_once $path->layouts . '/metas.php'; ?>
+
+
+
     </head>
     <style media="screen">
         #comment {
@@ -10,8 +16,14 @@
         }
     </style>
     <body>
-        <?php require_once $paths->get('layouts') . '/panel.php'; ?>
-        <?php require_once $paths->get('layouts') . '/notice.php'; ?>
+
+
+
+        <?php require_once $path->layouts . '/panel.php'; ?>
+        <?php require_once $path->layouts . '/notice.php'; ?>
+
+
+
         <?php if($get AND ($get === 'build' OR $get === 'edit')): ?>
             <div id="parent">
                 <div id="child">
@@ -24,7 +36,7 @@
                             <?php endif; ?>
                             <hr>
                             <br>
-                            <form id="controller-form" action="<?php echo ($get === 'edit') ? $uris->get('edit-controller') : $uris->get('create-controller'); ?>">
+                            <form id="controller-form" action="<?php echo ($get === 'edit') ? $uri->edit_controller : $uri->create_controller; ?>">
                                 <label for="">Controller name (40):</label>
                                 <input id="controller-name" class="L-input-1-s inputs" type="text" name="name" placeholder="Enter name here..." maxlength="40">
                                 <textarea id="code" class="L-textarea-1-s inputs" name="content">// Write your code here...</textarea>
@@ -39,10 +51,14 @@
                     </div>
                 </div>
             </div>
+
+
+
+
         <?php else: ?>
-            <?php require_once $paths->get('layouts') . '/null.php'; ?>
+            <?php require_once $path->layouts . '/null.php'; ?>
         <?php endif; ?>
-        <?php require_once $paths->get('layouts') . '/footer.php'; ?>
+        <?php require_once $path->layouts . '/footer.php'; ?>
     </body>
     <script type="text/javascript">
         var editor = CodeMirror.fromTextArea(document.getElementById("code"), {

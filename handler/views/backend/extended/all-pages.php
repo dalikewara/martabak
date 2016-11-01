@@ -1,12 +1,4 @@
 <style>
-    /*.page-content-items {
-        border-bottom: 1px solid rgb(214, 214, 214);
-        padding: 10px 20px;
-        transition: all 0.2s;
-    }
-    .page-content-items:hover {
-        background: rgb(248, 248, 248);
-    }*/
     .pages-box {
         padding: 10px 20px;
         box-sizing: border-box;

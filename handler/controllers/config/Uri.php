@@ -64,7 +64,7 @@ class Uri
             'create_meta' => 'process/create/meta',
             'edit_note' => 'process/edit/note',
             'edit_page_c' => 'process/edit/page',
-            'edit_controller' => 'process/edit/controller',
+            'edit_controller_c' => 'process/edit/controller',
             'edit_route' => 'process/edit/route',
             'edit_layout' => 'process/edit/layout',
             'edit_meta' => 'process/edit/meta',

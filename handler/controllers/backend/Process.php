@@ -90,7 +90,7 @@ class Process
     * @param    string|bool   $process
     * @return   mixed
     */
-    private function run($process)
+    private function run($process, $content)
     {
         // Run Database actions.
         $this->model->{$this->table}->$process($this->data, $this->data2);
@@ -110,7 +110,7 @@ class Process
                 //
                 // @ Referral from:
                 //   http://stackoverflow.com/questions/4594180/deleting-all-files-from-a-folder-using-php
-                $a = new \RecursiveDirectoryIterator($this->path->pages_storage,
+                $a = new \RecursiveDirectoryIterator($this->path->{$content . 's_storage'},
                     \FilesystemIterator::SKIP_DOTS);
                 $files = new \RecursiveIteratorIterator($a, \RecursiveIteratorIterator::CHILD_FIRST);
 
@@ -196,7 +196,7 @@ class Process
             }
 
             // Done the process.
-            $this->run($process);
+            $this->run($process, $content);
             die('ok');
         }
 
@@ -232,13 +232,12 @@ class Process
             /***** This will handle to create, edit, and delete a new page. *****/
             case 'page':
                 // Prepared variables.
-                // $title   = is_string($post['title']) ? $post['title'] : false;
                 $slug = isset($post['slug']) ? $post['slug'] : die('Unknown slug data!');
                 $content = isset($post['content']) ? $post['content'] : false;
                 $status = isset($post['status']) ? $post['status'] : die('Unknown status data!');
                 $desc = isset($post['desc']) ? $post['desc'] : die('Unknown description data!');
 
-                // Controller title and slug can't be empty
+                // Page title and slug can't be empty
                 empty($this->name) ? die('Page title cannot be empty!') : true;
                 empty($slug) ? die('Page slug cannot be empty!') : true;
                 // Title and slug also can't contains some special characters.
@@ -250,7 +249,7 @@ class Process
                 // Generate new file path.
                 $file = $this->path->pages_storage . '/' . $fileName;
 
-                // Checking is controller already exists.
+                // Checking is page already exists.
                 if((count($this->model->Page->select('filename')->clause('WHERE filename=:filename')
                 ->bindParams(['filename' => $fileName])->get()) OR file_exists($file)) AND
                 $process === 'insert')
@@ -286,6 +285,59 @@ class Process
                 {
                     $this->oldPath = $this->path->pages_storage . '/' .
                         $this->model->Page->select('filename')->clause('WHERE
+                        id=:id')->bindParams(['id' => $this->id])->get(1)[0]->filename;
+                    $this->fileSystem = 'rename';
+                }
+
+                $this->filePath = $file;
+                $this->fileContent = $content;
+                break;
+
+            /***** This will handle to create, edit, and delete a new controller. *****/
+            case 'controller':
+                // Prepared variables.
+                $content = isset($post['content']) ? $post['content'] : false;
+                $comment = isset($post['comment']) ? $post['comment'] : die('Unknown comment data!');
+
+                // Controller title and slug can't be empty
+                empty($this->name) ? die('Controller title cannot be empty!') : true;
+                // Title and slug also can't contains some special characters.
+                preg_match('/[^a-zA-Z0-9\!\s\.\,\(\)\[\]\*\&\%\$\#\@]+/', $this->name) ?
+                    die('Wrong title format!') : true;
+
+                // Generate filename based on the page title.
+                $fileName = md5($this->name) . '.php';
+                // Generate new file path.
+                $file = $this->path->controllers_storage . '/' . $fileName;
+
+                // Checking is controller already exists.
+                if((count($this->model->Controller->select('filename')->clause('WHERE filename=:filename')
+                ->bindParams(['filename' => $fileName])->get()) OR file_exists($file)) AND
+                $process === 'insert')
+                {
+                    die('Controller with title \'' . $this->name . '\' is already exists on storage.');
+                }
+
+                // Generating data.
+                $this->data = ['name' => $this->name, 'comment' => $comment,
+                    'filename' => $fileName, 'updated_at' => $this->date];
+
+                if($process === 'insert')
+                {
+                    $this->data['created_at'] = $this->date;
+                    $this->fileSystem = 'create';
+                }
+
+                if($process === 'update')
+                {
+                    $this->data2 = ['id' => $this->id];
+                    $this->fileSystem = 'update';
+                }
+
+                if($content === false)
+                {
+                    $this->oldPath = $this->path->controllers_storage . '/' .
+                        $this->model->Controller->select('filename')->clause('WHERE
                         id=:id')->bindParams(['id' => $this->id])->get(1)[0]->filename;
                     $this->fileSystem = 'rename';
                 }
@@ -406,59 +458,13 @@ class Process
             //     }
             //     break;
             //
-            // case 'controller':
-            //     if(isset($post['name']) AND isset($post['comment']) AND isset($post['content']))
-            //     {
-            //         $name    = is_string($post['name']) ? $post['name'] : false;
-            //         $comment = is_string($post['comment']) ? $post['comment'] : false;
-            //         $content = is_string($post['content']) ? $post['content'] : false;
-            //
-            //         // Controller name can't be empty
-            //         empty($name) ? die('Name cannot be empty!') : true;
-            //         // The name also can't contains some special characters.
-            //         preg_match('/[^a-zA-Z0-9\!\s\.\,\(\)\[\]\*\&\%\$\#\@]+/', $name) ?
-            //             die('Wrong name format!') : true;
-            //
-            //         // Generate filename based on the name
-            //         $fileName = md5($name) . '.php';
-            //         // Generate new file path
-            //         $file = $this->path->get('controllers-storage') . '/' . $fileName;
-            //
-            //         // Checking is controller already exists.
-            //         if(in_array($fileName, $this->model->controllers->Select('filename')
-            //         ->Result()) OR file_exists($file))
-            //         {
-            //             die('Controller with name \'' . $name . '\' is already exists on storage.');
-            //         }
-            //         else
-            //         {
-            //             // Insert data into Database if has no problems
-            //             $this->model->controllers->Insert([
-            //                 'name'     => $name,
-            //                 'filename' => $fileName,
-            //                 'comment'  => $comment,
-            //             ]);
-            //
-            //             // Insert log data
-            //             $this->model->logs->Insert([
-            //                 'message' => $this->date . ' You have built a new controller with name <b>\'' . $name . '\'</b>',
-            //             ]);
-            //
-            //             // Create new controller file
-            //             $fCreate = fopen($file, 'w');
-            //             fwrite($fCreate, $content);
-            //             fclose($fCreate);
-            //         }
-            //     }
-            //     break;
-            //
             // default:
             //     die('Illegal request!');
             //     break;
         }
 
         // The final process.
-        $this->run($process);
+        $this->run($process, $content);
         // If this line is reached, means everything was done perfectly.
         // Then, die with 'ok' notice. The process was complete.
         die('ok');

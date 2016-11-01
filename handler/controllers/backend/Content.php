@@ -45,7 +45,7 @@ class Content extends \framework\parents\Controller
 
         switch($content)
         {
-            // handle to gets all logs data.
+            /***** Handle to gets all logs data. *****/
             case 'logs':
                 $pagination = null;
                 $page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -79,7 +79,7 @@ class Content extends \framework\parents\Controller
                 ];
                 break;
 
-            // handle to gets all pages data.
+            /***** Handle to gets all pages data. *****/
             case 'pages':
                 $page = isset($_GET['page']) ? $_GET['page'] : 1;
                 $data = $this->model->Page->clause('ORDER BY id DESC')->get();
@@ -100,7 +100,28 @@ class Content extends \framework\parents\Controller
                 ];
                 break;
 
-            // handle to gets all notes data.
+            /***** Handle to gets all controllers data. *****/
+            case 'controllers':
+                $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $data = $this->model->Controller->clause('ORDER BY id DESC')->get();
+
+                $this->_dieOnNull($data, '<p><i>You have no controllers.</i></p>');
+
+                $data = $this->pagination->data($data, 10);
+                $pagination = $this->pagination->pagination($data, 10, $page);
+                $data = $this->pagination->current($data, $page);
+                $datas = [
+                    'all' => $data,
+                    'pagination' => $pagination,
+                    'uri' => [
+                        'edit_controller' => $this->uri->edit_controller,
+                        'edit' => $this->uri->edit_controller_c,
+                        'delete' => $this->uri->delete_controller,
+                    ],
+                ];
+                break;
+
+            /***** Handle to gets all notes data. *****/
             case 'notes':
                 $page = isset($_GET['page']) ? $_GET['page'] : 1;
                 $data = $this->model->Note->clause('ORDER BY id DESC')->get();

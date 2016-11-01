@@ -151,6 +151,9 @@ if(in_array($currentUri, $codeMirrors)): ?>
     <?php
     // Style for pages that required to do process.
     if(in_array($currentUri, $process)): ?>
+        .content-parent {
+            border-bottom: 1px solid rgb(157, 157, 157);
+        }
         .content-edit-items-text
         {
             margin-right: 10px;
