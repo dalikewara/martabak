@@ -45,10 +45,10 @@
                     <p class="page-content-title">
                         <?php if($data->status == 1): ?>
                             <strong><a id="content-main-title-<?php echo $data->id; ?>" href="<?php echo $data->slug; ?>"><?php echo $data->title; ?></a></strong>
-                            <span class="L-label-1-primary"><small>Published</small></span>
+                            <span><small id="content-main-title-label-<?php echo $data->id; ?>" class="L-label-1-primary">Published</small></span>
                         <?php else: ?>
-                            <strong><?php echo $data->title; ?></strong>
-                            <span class="L-label-1-warning"><small>Drafted</small></span>
+                            <strong id="content-main-title-<?php echo $data->id; ?>"><?php echo $data->title; ?></strong>
+                            <span><small id="content-main-title-label-<?php echo $data->id; ?>" class="L-label-1-warning">Drafted</small></span>
                         <?php endif; ?>
                     </p>
                     <p id="content-main-description-<?php echo $data->id; ?>"><?php echo $data->description; ?></p>
@@ -110,25 +110,25 @@
 
 
                 <!-- Content edit section -->
-                <span id="content-delete-section-<?php echo $data->id; ?>" class="content-delete-section">
+                <span id="content-delete-section-<?php echo $data->id; ?>" class="content-delete-section content-display">
                     <span>Are you sure to delete this page permanently?</span>
                     <strong id="content-delete-confirm-<?php echo $data->id; ?>" class="content-delete-confirm" valIndex="Page" valId="<?php echo $data->id; ?>" valUrl="<?php echo $datas['uri']['delete']; ?>" valTitle="<?php echo $data->title; ?>">Yes</strong>
                 </span>
-                <span id="content-status-section-<?php echo $data->id; ?>" class="content-status-section">
+                <span id="content-status-section-<?php echo $data->id; ?>" class="content-status-section content-display">
                     <?php if($data->status == 1): ?>
-                        <span>Are you sure to make this page as draft?</span>
+                        <span id="content-status-confirm-text-<?php echo $data->id; ?>">Are you sure to make this page as draft?</span>
                         <strong id="content-status-confirm-<?php echo $data->id; ?>" class="content-status-confirm" valIndex="Page" valId="<?php echo $data->id; ?>" valStatus="2" valUrl="<?php echo $datas['uri']['edit']; ?>" valTitle="<?php echo $data->title; ?>">Yes</strong>
                     <?php else: ?>
-                        <span>Are you sure to publish this page?</span>
+                        <span id="content-status-confirm-text-<?php echo $data->id; ?>">Are you sure to publish this page?</span>
                         <strong id="content-status-confirm-<?php echo $data->id; ?>" class="content-status-confirm" valIndex="Page" valId="<?php echo $data->id; ?>" valStatus="1" valUrl="<?php echo $datas['uri']['edit']; ?>" valTitle="<?php echo $data->title; ?>">Yes</strong>
                     <?php endif; ?>
                 </span>
-                <div id="content-quick-edit-section-<?php echo $data->id; ?>" class="content-quick-edit-section">
+                <div id="content-quick-edit-section-<?php echo $data->id; ?>" class="content-quick-edit-section content-display">
                     <form id="content-quick-edit-form-<?php echo $data->id; ?>" class="content-quick-edit-form" action="">
                         <label>Title:</label>
-                        <input id="content-quick-edit-input-title-<?php echo $data->id; ?>" class="L-input-1-s" type="text" name="title" value="<?php echo $data->title; ?>">
+                        <input id="content-quick-edit-input-title-<?php echo $data->id; ?>" class="L-input-1-s name-input" type="text" name="title" value="<?php echo $data->title; ?>">
                         <label>Slug:</label>
-                        <input id="content-quick-edit-input-slug-<?php echo $data->id; ?>" class="L-input-1-s" type="text" name="slug" value="<?php echo $data->slug; ?>">
+                        <input id="content-quick-edit-input-slug-<?php echo $data->id; ?>" class="L-input-1-s slug-input" type="text" name="slug" value="<?php echo $data->slug; ?>">
                         <label>Description:</label>
                         <textarea id="content-quick-edit-input-description-<?php echo $data->id; ?>" class="L-textarea-1-s" name="desc" rows="8" cols="40"><?php echo $data->description; ?></textarea>
                         <input type="hidden" name="id" value="<?php echo $data->id; ?>">

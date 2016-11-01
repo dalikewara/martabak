@@ -289,13 +289,19 @@
                 {
                     if(status == 1)
                     {
+                        Petis('#content-main-title-label-' + id).inner('Published');
+                        Petis('#content-main-title-label-' + id).attr('class', 'L-label-1-primary');
                         Petis('#content-edit-status-text-' + id).inner('Make as draft');
                         Petis('#content-status-confirm-' + id).attr('valStatus', 2);
+                        Petis('#content-status-confirm-text-' + id).inner('Are you sure to make this page as draft?');
                     }
                     else if(status == 2)
                     {
+                        Petis('#content-main-title-label-' + id).inner('Drafted');
+                        Petis('#content-main-title-label-' + id).attr('class', 'L-label-1-warning');
                         Petis('#content-edit-status-text-' + id).inner('Publish this');
                         Petis('#content-status-confirm-' + id).attr('valStatus', 1);
+                        Petis('#content-status-confirm-text-' + id).inner('Are you sure to publish this page?');
                     }
                 });
         });

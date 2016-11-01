@@ -171,6 +171,13 @@ if(in_array($currentUri, $codeMirrors)): ?>
             visibility: hidden;
             margin: 8px 0;
         }
+        .content-status-confirm {
+            cursor: pointer;
+            color: rgb(65, 138, 39);
+        }
+        .content-status-confirm:hover {
+            color: rgb(113, 199, 83);
+        }
         .content-delete-confirm, .content-delete-confirm-all {
             color: rgb(200, 48, 75);
             cursor: pointer;
@@ -281,6 +288,7 @@ if(in_array($currentUri, $process)): ?>
 
             if(a === 0)
             {
+                Petis('.content-display').hide();
                 Petis('#content-delete-section-' + id).show();
 
                 a = 1;
@@ -302,6 +310,7 @@ if(in_array($currentUri, $process)): ?>
 
             if(b === 0)
             {
+                Petis('.content-display').hide();
                 Petis('#content-quick-edit-section-' + id).show();
 
                 b = 1;
@@ -323,6 +332,7 @@ if(in_array($currentUri, $process)): ?>
 
             if(c === 0)
             {
+                Petis('.content-display').hide();
                 Petis('#content-status-section-' + id).show();
 
                 c = 1;

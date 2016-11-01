@@ -72,11 +72,11 @@
 
 
                 <!-- Content edit section -->
-                <span id="content-delete-section-<?php echo $data->id; ?>" class="content-delete-section">
+                <span id="content-delete-section-<?php echo $data->id; ?>" class="content-delete-section content-display">
                     <span>Are you sure to delete this note permanently?</span>
                     <strong id="content-delete-confirm-<?php echo $data->id; ?>" class="content-delete-confirm" valIndex="Note" valId="<?php echo $data->id; ?>" valUrl="<?php echo $datas['uri']['delete']; ?>" valTitle="<?php echo $data->title; ?>">Yes</strong>
                 </span>
-                <div id="content-quick-edit-section-<?php echo $data->id; ?>" class="content-quick-edit-section">
+                <div id="content-quick-edit-section-<?php echo $data->id; ?>" class="content-quick-edit-section content-display">
                     <form id="content-quick-edit-form-<?php echo $data->id; ?>" class="content-quick-edit-form" action="">
                         <label>Title:</label>
                         <input id="content-quick-edit-input-title-<?php echo $data->id; ?>" class="L-input-1-s" type="text" name="title" value="<?php echo $data->title; ?>">
