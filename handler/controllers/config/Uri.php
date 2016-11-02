@@ -66,7 +66,7 @@ class Uri
             'edit_page_c' => 'process/edit/page',
             'edit_controller_c' => 'process/edit/controller',
             'edit_route' => 'process/edit/route',
-            'edit_layout' => 'process/edit/layout',
+            'edit_layout_c' => 'process/edit/layout',
             'edit_meta' => 'process/edit/meta',
             'edit_settings' => 'process/edit/settings',
             'edit_landing-home' => 'process/edit/landing-home',

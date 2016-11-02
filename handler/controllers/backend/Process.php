@@ -307,7 +307,7 @@ class Process
                 empty($this->name) ? die('Controller title cannot be empty!') : true;
                 // Title and slug also can't contains some special characters.
                 preg_match('/[^a-zA-Z0-9\!\s\.\,\(\)\[\]\*\&\%\$\#\@]+/', $this->name) ?
-                    die('Wrong title format!') : true;
+                    die('Wrong name format!') : true;
 
                 // Generate filename based on the page title.
                 $fileName = md5($this->name) . '.php';
@@ -319,7 +319,7 @@ class Process
                 ->bindParams(['filename' => $fileName])->get()) OR file_exists($file)) AND
                 $process === 'insert')
                 {
-                    die('Controller with title \'' . $this->name . '\' is already exists on storage.');
+                    die('Controller with name \'' . $this->name . '\' is already exists on storage.');
                 }
 
                 // Generating data.
@@ -381,6 +381,57 @@ class Process
                 }
                 break;
 
+            /***** This will handle to create, edit, and delete a new layout. *****/
+            case 'layout':
+                // Prepared variables.
+                $content = isset($post['content']) ? $post['content'] : false;
+
+                // Layout name can't be empty
+                empty($this->name) ? die('Layout name cannot be empty!') : true;
+                // Name also can't contains some special characters.
+                preg_match('/[^a-zA-Z0-9\!\s\.\,\(\)\[\]\*\&\%\$\#\@]+/', $this->name) ?
+                    die('Wrong name format!') : true;
+
+                // Generate filename based on the layout name.
+                $fileName = md5($this->name) . '.php';
+                // Generate new file path.
+                $file = $this->path->layouts_storage . '/' . $fileName;
+
+                // Checking is controller already exists.
+                if((count($this->model->Layout->select('filename')->clause('WHERE filename=:filename')
+                ->bindParams(['filename' => $fileName])->get()) OR file_exists($file)) AND
+                $process === 'insert')
+                {
+                    die('Layout with name \'' . $this->name . '\' is already exists on storage.');
+                }
+
+                // Generating data.
+                $this->data = ['name' => $this->name, 'filename' => $fileName, 'updated_at' => $this->date];
+
+                if($process === 'insert')
+                {
+                    $this->data['created_at'] = $this->date;
+                    $this->fileSystem = 'create';
+                }
+
+                if($process === 'update')
+                {
+                    $this->data2 = ['id' => $this->id];
+                    $this->fileSystem = 'update';
+                }
+
+                if($content === false)
+                {
+                    $this->oldPath = $this->path->layouts_storage . '/' .
+                        $this->model->Layout->select('filename')->clause('WHERE
+                        id=:id')->bindParams(['id' => $this->id])->get(1)[0]->filename;
+                    $this->fileSystem = 'rename';
+                }
+
+                $this->filePath = $file;
+                $this->fileContent = $content;
+                break;
+
             // case 'meta':
             //     if(isset($post['custom_id']) AND isset($post['type']) AND isset($post['name'])
             //     AND isset($post['value1']) AND isset($post['value2']) AND isset($post['value3'])
@@ -413,50 +464,6 @@ class Process
             //         $this->model->logs->Insert([
             //             'message' => $this->date . ' You have inserted a new meta',
             //         ]);
-            //     }
-            //     break;
-            //
-            // case 'layout':
-            //     if(isset($post['name']) AND isset($post['content']))
-            //     {
-            //         $name    = is_string($post['name']) ? $post['name'] : false;
-            //         $content = is_string($post['content']) ? $post['content'] : false;
-            //
-            //         // Layout name can't be empty
-            //         empty($name) ? die('Name cannot be empty!') : true;
-            //         // The name also can't contains some special characters.
-            //         preg_match('/[^a-zA-Z0-9\!\s\.\,\(\)\[\]\*\&\%\$\#\@]+/', $name) ?
-            //             die('Wrong name format!') : true;
-            //
-            //         // Generate filename based on the name
-            //         $fileName = md5($name) . '.php';
-            //         // Generate new file path
-            //         $file = $this->path->get('layouts-storage') . '/' . $fileName;
-            //
-            //         // Checking is layout already exists.
-            //         if(in_array($fileName, $this->model->layouts->Select('filename')
-            //         ->Result()) OR file_exists($file))
-            //         {
-            //             die('Layout with name \'' . $name . '\' is already exists on storage.');
-            //         }
-            //         else
-            //         {
-            //             // Insert data into Database if has no problems
-            //             $this->model->layouts->Insert([
-            //                 'name' => $name,
-            //                 'filename' => $fileName,
-            //             ]);
-            //
-            //             // Create new layout file
-            //             $fCreate = fopen($file, 'w');
-            //             fwrite($fCreate, $content);
-            //             fclose($fCreate);
-            //
-            //             // Insert log data
-            //             $this->model->logs->Insert([
-            //                 'message' => $this->date . ' You have added a new layout with name <b>\'' . $name . '\'</b>',
-            //             ]);
-            //         }
             //     }
             //     break;
             //

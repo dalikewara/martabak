@@ -162,6 +162,27 @@ class Content extends \framework\parents\Controller
                 ];
                 break;
 
+            /***** Handle to gets all layouts data. *****/
+            case 'layouts':
+                $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $data = $this->model->Layout->clause('ORDER BY id DESC')->get();
+
+                $this->_dieOnNull($data, '<p><i>You have no layouts.</i></p>');
+
+                $data = $this->pagination->data($data, 10);
+                $pagination = $this->pagination->pagination($data, 10, $page);
+                $data = $this->pagination->current($data, $page);
+                $datas = [
+                    'all' => $data,
+                    'pagination' => $pagination,
+                    'uri' => [
+                        'edit_layout' => $this->uri->edit_layout,
+                        'edit' => $this->uri->edit_layout_c,
+                        'delete' => $this->uri->delete_layout,
+                    ],
+                ];
+                break;
+
             default:
                 break;
         }
