@@ -132,12 +132,14 @@
           indentWithTabs: true
         });
 
+        // Preview
         Petis('#button-preview').on('click', function()
         {
             Petis('.preview-frame').attr('src', Petis(this).attr('value') + '?data='
                 + Petis({encode: editor.getValue()}));
         });
 
+        // Publish confirm
         Petis('#page-button-publish').on('click', function()
         {
             ajax(Petis('#page-form').attr('action'), 'title=' + Petis({encode:
@@ -148,6 +150,7 @@
                 'Page has been created succesfuly!');
         });
 
+        // Draft confirm
         Petis('#page-button-draft').on('click', function()
         {
             ajax(Petis('#page-form').attr('action'), 'title=' + Petis({encode:

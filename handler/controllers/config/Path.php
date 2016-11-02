@@ -23,6 +23,7 @@ class Path
             'layouts_storage' => 'storages/layouts',
             'controllers_storage' => 'storages/controllers',
             'pages_storage' => 'storages/pages',
+            'landings_storage' => 'storages/landings',
         ];
         // This contains paths that used 'public'
         $this->public = [

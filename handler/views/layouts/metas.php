@@ -9,8 +9,8 @@
         $uri->add_layout,
         $uri->edit_layout,
         $uri->landing,
+        $uri->landing_construction,
         $uri->home,
-        $uri->construction,
     ];
     $simpleDef = [
         $uri->insert_meta,

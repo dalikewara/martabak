@@ -11,7 +11,7 @@ $menuNew = '
 // Prepared menu tools.
 $menuTools = '
     <span class="panel-dropdown-items"><a href="' . $uri->landing . '">Landing template</a></span>
-    <span class="panel-dropdown-items"><a href="' . $uri->assets_management . '">Assets management</a></span>
+    <span class="panel-dropdown-items unactive-feature">Assets management</span>
  '; ?>
 
 
@@ -103,6 +103,10 @@ $menuTools = '
     .panel-dropdown-menu {
         display: none;
         visibility: hidden;
+    }
+    .unactive-feature {
+        color: rgb(203, 203, 203);
+        pointer-events: none;
     }
     @media only screen and (max-width: 1015px)
     {
