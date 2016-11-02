@@ -121,6 +121,27 @@ class Content extends \framework\parents\Controller
                 ];
                 break;
 
+            /***** Handle to gets all routes data. *****/
+            case 'routes':
+                $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $data = $this->model->Route->clause('WHERE system=:system ORDER BY id DESC')->
+                    bindParams(['system' => 0])->get();
+
+                $this->_dieOnNull($data, '<p><i>You have no routes.</i></p>');
+
+                $data = $this->pagination->data($data, 10);
+                $pagination = $this->pagination->pagination($data, 10, $page);
+                $data = $this->pagination->current($data, $page);
+                $datas = [
+                    'all' => $data,
+                    'pagination' => $pagination,
+                    'uri' => [
+                        'edit' => $this->uri->edit_route,
+                        'delete' => $this->uri->delete_route,
+                    ],
+                ];
+                break;
+
             /***** Handle to gets all notes data. *****/
             case 'notes':
                 $page = isset($_GET['page']) ? $_GET['page'] : 1;

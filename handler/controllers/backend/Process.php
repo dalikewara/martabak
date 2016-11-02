@@ -186,6 +186,10 @@ class Process
             {
                 $this->data = ['id' => $this->id];
             }
+            elseif($this->id === 'all' AND $content === 'route')
+            {
+                $this->data = ['system' => 0];
+            }
 
             // Check if the content is used file system.
             if(in_array($content, $this->fileOrg))
@@ -346,39 +350,37 @@ class Process
                 $this->fileContent = $content;
                 break;
 
-            // // This will handle function to register a new route.
-            // case 'route':
-            //     if(isset($post['prefix']) AND isset($post['uri']) AND isset($post['method']) AND isset($post['target']))
-            //     {
-            //         $prefix = is_string($post['prefix']) ? $post['prefix'] : false;
-            //         $uri    = is_string($post['uri']) ? $post['uri'] : false;
-            //         $method = is_string($post['method']) ? $post['method'] : false;
-            //         $target = is_string($post['target']) ? $post['target'] : false;
-            //
-            //         // Route prefix, uri and method can't be empty
-            //         empty($prefix) ? die('Prefix cannot be empty!') : true;
-            //         empty($uri) ? die('Uri cannot be empty!') : true;
-            //         empty($method) ? die('Method cannot be empty!') : true;
-            //         // Auto set target to null if it leaved empty
-            //         empty($target) ? ($target = 'null') : true;
-            //
-            //         // Insert data into Database if has no problems
-            //         $this->model->routes->Insert([
-            //             'prefix' => $prefix,
-            //             'uri'    => $uri,
-            //             'method' => $method,
-            //             'target' => $target,
-            //             'system' => 0,
-            //         ]);
-            //
-            //         // Insert log data
-            //         $this->model->logs->Insert([
-            //             'message' => $this->date . ' You have registered a new route with prefix <b>\''
-            //                 . $prefix . '\'</b> and uri <b>\'' . $uri . '\'</b>',
-            //         ]);
-            //     }
-            //     break;
-            //
+            /***** This will handle to create, edit, and delete a new route. *****/
+            case 'route':
+                // Prepared variables.
+                $uri = isset($post['uri']) ? $post['uri'] :
+                    die('Unknown uri data!');
+                $method = isset($post['method']) ? $post['method'] :
+                    die('Unknown method data!');
+                $target = isset($post['target']) ? $post['target'] :
+                    die('Unknown target data!');
+
+                // Route prefix and uri can't be empty
+                empty($this->name) ? die('Route prefix cannot be empty!') : true;
+                empty($uri) ? die('Route uri cannot be empty!') : true;
+
+                // Validation here...
+
+                // Generating data.
+                $this->data = ['prefix' => $this->name, 'uri' => $uri, 'system' => 0,
+                    'method' => $method, 'target' => $target, 'updated_at' => $this->date];
+
+                if($process === 'insert')
+                {
+                    $this->data['created_at'] = $this->date;
+                }
+
+                if($process === 'update')
+                {
+                    $this->data2 = ['id' => $this->id];
+                }
+                break;
+
             // case 'meta':
             //     if(isset($post['custom_id']) AND isset($post['type']) AND isset($post['name'])
             //     AND isset($post['value1']) AND isset($post['value2']) AND isset($post['value3'])
@@ -458,9 +460,9 @@ class Process
             //     }
             //     break;
             //
-            // default:
-            //     die('Illegal request!');
-            //     break;
+            default:
+                die('Illegal request!');
+                break;
         }
 
         // The final process.

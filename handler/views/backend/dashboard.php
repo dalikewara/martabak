@@ -314,8 +314,21 @@
             var id = Petis(this).attr('valId');
             var index = Petis(this).attr('valIndex');
 
-            ajax(Petis(this).attr('valUrl'), Petis('#content-quick-edit-form-'
-                + id).getFormData(), index + ' has been edited succesfully!', false, true, function()
+            if(index === 'Route')
+            {
+                var data = 'id=' + id + '&prefix=' + Petis('#content-quick-edit-input-title-'
+                    + id).val + '&uri=' + Petis('#content-quick-edit-input-uri-'
+                        + id).val + '&method=' + Petis('#content-quick-edit-input-method-'
+                            + id).attr('value') + '&target=' + Petis('#content-quick-edit-input-target-'
+                                + id).val + '&__token=';
+            }
+            else
+            {
+                var data = Petis('#content-quick-edit-form-' + id).getFormData();
+            }
+
+            ajax(Petis(this).attr('valUrl'), data, index + ' has been edited succesfully!',
+                false, true, function()
                 {
                     var title = Petis('#content-quick-edit-input-title-' + id).val;
 
@@ -328,7 +341,25 @@
                         '#content-quick-edit-input-comment-' + id).val);
                     Petis('#content-main-last-edited-' + id).inner('Last edited: recent');
                     Petis('#content-delete-confirm-' + id).attr('valTitle', title);
+
+                    if(index === 'Route')
+                    {
+                        Petis('#content-main-uri-' + id).inner(Petis('#content-quick-edit-input-uri-'
+                            + id).val);
+                        Petis('#content-main-method-' + id).inner(Petis('#content-quick-edit-input-method-'
+                            + id).attr('value'));
+                        Petis('#content-main-target-' + id).inner(Petis('#content-quick-edit-input-target-'
+                            + id).val);
+                    }
                 });
+        });
+
+        // Route method
+        Petis('.method-input').on('click', function()
+        {
+            var id = Petis(this).attr('valId');
+
+            Petis('#content-quick-edit-input-method-' + id).attr('value', Petis(this).attr('value'));
         });
 
         // Pagination

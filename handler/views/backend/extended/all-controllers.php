@@ -98,7 +98,6 @@
                         <label>Comment:</label>
                         <textarea id="content-quick-edit-input-comment-<?php echo $data->id; ?>" class="L-textarea-1-s" name="comment" rows="8" cols="40"><?php echo $data->comment; ?></textarea>
                         <input type="hidden" name="id" value="<?php echo $data->id; ?>">
-                        <input type="hidden" name="status" value="<?php echo $data->status; ?>">
                         <input type="hidden" name="__token" value="">
                     </form>
                     <button id="content-quick-edit-confirm-<?php echo $data->id; ?>" class="L-button-4-s content-quick-edit-confirm" type="button" name="button" valIndex="Controller" valId="<?php echo $data->id; ?>" valUrl="<?php echo $datas['uri']['edit']; ?>">Save</button>
