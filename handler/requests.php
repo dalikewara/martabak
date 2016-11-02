@@ -1,8 +1,8 @@
 <?php
 
 // Testing
-// $model = new \mvc\models\Controller;
-// $model->Create();
+// $model = new \model\Landing;
+// $model->create();
 // die;
 
 // Martabak needs the following class to create dinamically backend routes.

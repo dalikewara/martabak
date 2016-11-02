@@ -2,7 +2,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php require_once $paths->get('layouts') . '/metas.php'; ?>
+
+
+
+        <?php require_once $path->layouts . '/metas.php'; ?>
+
+
+
     </head>
     <style>
         #child-inner {
@@ -27,8 +33,14 @@
         }
     </style>
     <body>
-        <?php require_once $paths->get('layouts') . '/panel.php'; ?>
-        <?php require_once $paths->get('layouts') . '/notice.php'; ?>
+
+
+
+        <?php require_once $path->layouts . '/panel.php'; ?>
+        <?php require_once $path->layouts . '/notice.php'; ?>
+
+
+
         <?php if(!$get OR $get === 'home' OR $get === 'construction'): ?>
             <div id="parent">
                 <div id="child">
@@ -65,10 +77,13 @@
                     </div>
                 </form> -->
             </div>
+
+
+
         <?php else: ?>
-            <?php require_once $paths->get('layouts') . '/null.php'; ?>
+            <?php require_once $path->layouts . '/null.php'; ?>
         <?php endif; ?>
-        <?php require_once $paths->get('layouts') . '/footer.php'; ?>
+        <?php require_once $path->layouts . '/footer.php'; ?>
     </body>
     <script>
         var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
