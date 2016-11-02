@@ -36,13 +36,23 @@
                 <div class="content-main-box metas-item">
                     <p>
                         <strong>Custom id</strong> :
-                        <span id="content-main-title-<?php echo $data->id; ?>" class="meta-content-title"><?php echo $data->custom_id; ?></span> |
+                        <span id="content-main-custom-id-<?php echo $data->id; ?>" class="meta-content-title"><?php echo $data->custom_id; ?></span> |
                         <strong>Type</strong> :
-                        <span id="content-main-uri-<?php echo $data->id; ?>" class="meta-content-uri"><?php echo $data->type; ?></span> |
+                        <span id="content-main-type-<?php echo $data->id; ?>" class="meta-content-uri"><?php echo $data->type; ?></span> |
                         <strong>Name</strong> :
-                        <span id="content-main-method-<?php echo $data->id; ?>" class="meta-content-method"><?php echo $data->name; ?></span> |
+                        <span id="content-main-title-<?php echo $data->id; ?>" class="meta-content-method"><?php echo $data->name; ?></span> |
                         <strong>Value1</strong> :
-                        <span id="content-main-target-<?php echo $data->id; ?>" class="meta-content-target"><?php echo $data->value1; ?></span>
+                        <span id="content-main-value1-<?php echo $data->id; ?>" class="meta-content-value"><?php echo $data->value1; ?></span> |
+                        <strong>Value2</strong> :
+                        <span id="content-main-value2-<?php echo $data->id; ?>" class="meta-content-value"><?php echo $data->value2; ?></span> |
+                        <strong>Value3</strong> :
+                        <span id="content-main-value3-<?php echo $data->id; ?>" class="meta-content-value"><?php echo $data->value3; ?></span> |
+                        <strong>Value4</strong> :
+                        <span id="content-main-value4-<?php echo $data->id; ?>" class="meta-content-value"><?php echo $data->value4; ?></span> |
+                        <strong>Value5</strong> :
+                        <span id="content-main-value5-<?php echo $data->id; ?>" class="meta-content-value"><?php echo $data->value5; ?></span> |
+                        <strong>Value6</strong> :
+                        <span id="content-main-value6-<?php echo $data->id; ?>" class="meta-content-value"><?php echo $data->value6; ?></span> |
                     </p>
                     <p>
                         <small>Created at <?php echo $data->created_at; ?></small> |
@@ -91,9 +101,19 @@
                         <label>Type:</label>
                         <input id="content-quick-edit-input-type-<?php echo $data->id; ?>" class="L-input-1-s slug-input" type="text" name="type" value="<?php echo $data->type; ?>">
                         <label>Name: </label>
-                        <input id="content-quick-edit-input-name-<?php echo $data->id; ?>" class="L-input-1-s slug-input" type="text" name="name" value="<?php echo $data->name; ?>">
+                        <input id="content-quick-edit-input-title-<?php echo $data->id; ?>" class="L-input-1-s slug-input" type="text" name="name" value="<?php echo $data->name; ?>">
                         <label>Value1:</label>
                         <input id="content-quick-edit-input-value1-<?php echo $data->id; ?>" class="L-input-1-s target-input" type="text" name="value1" value="<?php echo $data->value1; ?>">
+                        <label>Value2:</label>
+                        <input id="content-quick-edit-input-value2-<?php echo $data->id; ?>" class="L-input-1-s target-input" type="text" name="value2" value="<?php echo $data->value2; ?>">
+                        <label>Value3:</label>
+                        <input id="content-quick-edit-input-value3-<?php echo $data->id; ?>" class="L-input-1-s target-input" type="text" name="value3" value="<?php echo $data->value3; ?>">
+                        <label>Value4:</label>
+                        <input id="content-quick-edit-input-value4-<?php echo $data->id; ?>" class="L-input-1-s target-input" type="text" name="value4" value="<?php echo $data->value4; ?>">
+                        <label>Value5:</label>
+                        <textarea id="content-quick-edit-input-value5-<?php echo $data->id; ?>" class="L-textarea-1-s" name="value5" rows="8" cols="40"><?php echo $data->value5; ?></textarea>
+                        <label>Value6:</label>
+                        <input id="content-quick-edit-input-value6-<?php echo $data->id; ?>" class="L-input-1-s target-input" type="text" name="value6" value="<?php echo $data->value6; ?>">
                         <input type="hidden" name="id" value="<?php echo $data->id; ?>">
                         <input type="hidden" name="__token" value="">
                     </form>

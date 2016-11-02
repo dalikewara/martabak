@@ -351,6 +351,25 @@
                         Petis('#content-main-target-' + id).inner(Petis('#content-quick-edit-input-target-'
                             + id).val);
                     }
+                    else if(index === 'Meta')
+                    {
+                        Petis('#content-main-custom-id-' + id).inner(Petis(
+                            '#content-quick-edit-input-custom-id-' + id).val);
+                        Petis('#content-main-type-' + id).inner(Petis(
+                            '#content-quick-edit-input-type-' + id).val);
+                        Petis('#content-main-value1-' + id).inner(Petis(
+                            '#content-quick-edit-input-value1-' + id).val);
+                        Petis('#content-main-value2-' + id).inner(Petis(
+                            '#content-quick-edit-input-value2-' + id).val);
+                        Petis('#content-main-value3-' + id).inner(Petis(
+                            '#content-quick-edit-input-value3-' + id).val);
+                        Petis('#content-main-value4-' + id).inner(Petis(
+                            '#content-quick-edit-input-value4-' + id).val);
+                        Petis('#content-main-value5-' + id).inner(Petis(
+                            '#content-quick-edit-input-value5-' + id).val);
+                        Petis('#content-main-value6-' + id).inner(Petis(
+                            '#content-quick-edit-input-value6-' + id).val);
+                    }
                 });
         });
 
