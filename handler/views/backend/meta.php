@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php require_once $paths->get('layouts') . '/metas.php'; ?>
+
+
+
+        <?php require_once $path->layouts . '/metas.php'; ?>
+
+
+
     </head>
     <style media="screen">
 
     </style>
     <body>
-        <?php require_once $paths->get('layouts') . '/panel.php'; ?>
-        <?php require_once $paths->get('layouts') . '/notice.php'; ?>
+
+
+
+        <?php require_once $path->layouts . '/panel.php'; ?>
+        <?php require_once $path->layouts . '/notice.php'; ?>
+
+
+
         <div id="parent">
             <div id="child">
                 <div id="note-box" class="add-box">
@@ -16,7 +28,7 @@
                         <h3>Insert a new custom meta</h3>
                         <hr>
                         <br>
-                        <form id="meta-form" action="<?php echo $uris->get('create-meta'); ?>">
+                        <form id="meta-form" action="<?php echo $uri->create_meta; ?>">
                             <label for="">custom_id (11 | int):</label>
                             <input class="L-input-1-s inputs" type="text" name="custom_id" placeholder="Enter custom_id here..." maxlength="11">
                             <label for="">type (20 | varchar):</label>
@@ -42,7 +54,13 @@
                 </div>
             </div>
         </div>
-        <?php require_once $paths->get('layouts') . '/footer.php'; ?>
+
+
+
+        <?php require_once $path->layouts . '/footer.php'; ?>
+
+
+
     </body>
     <script type="text/javascript">
     Petis('#insert-button').on('click', function()

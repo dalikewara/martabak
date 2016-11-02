@@ -432,41 +432,38 @@ class Process
                 $this->fileContent = $content;
                 break;
 
-            // case 'meta':
-            //     if(isset($post['custom_id']) AND isset($post['type']) AND isset($post['name'])
-            //     AND isset($post['value1']) AND isset($post['value2']) AND isset($post['value3'])
-            //     AND isset($post['value4']) AND isset($post['value5']) AND isset($post['value6']))
-            //     {
-            //         $custom_id = is_numeric($post['custom_id']) ? $post['custom_id'] : false;
-            //         $type      = is_string($post['type']) ? $post['type'] : false;
-            //         $name      = is_string($post['name']) ? $post['name'] : false;
-            //         $value1    = is_string($post['value1']) ? $post['value1'] : false;
-            //         $value2    = is_string($post['value2']) ? $post['value2'] : false;
-            //         $value3    = is_numeric($post['value3']) ? $post['value3'] : false;
-            //         $value4    = is_string($post['value4']) ? $post['value4'] : false;
-            //         $value5    = is_string($post['value5']) ? $post['value5'] : false;
-            //         $value6    = is_string($post['value6']) ? $post['value6'] : false;
-            //
-            //         // Insert data into Database if has no problems
-            //         $this->model->metas->Insert([
-            //             'custom_id' => $custom_id,
-            //             'type'  => $type,
-            //             'name' => $name,
-            //             'value1' => $value1,
-            //             'value2' => $value2,
-            //             'value3' => $value3,
-            //             'value4' => $value4,
-            //             'value5' => $value5,
-            //             'value6' => $value6,
-            //         ]);
-            //
-            //         // Insert log data
-            //         $this->model->logs->Insert([
-            //             'message' => $this->date . ' You have inserted a new meta',
-            //         ]);
-            //     }
-            //     break;
-            //
+            case 'meta':
+                // Prepared variables.
+                $customId = isset($post['custom_id']) ? $post['custom_id'] :
+                    die('Unknown custom_id data!');
+                $type = isset($post['type']) ? $post['type'] :
+                    die('Unknown type data!');
+
+                for($i = 1; $i < 7; $i++)
+                {
+                    $value[$i] = isset($post['value' . $i]) ? $post['value' . $i] :
+                        die('Unknown value' . $i . ' data!');
+                }
+
+                // Validation here...
+
+                // Generating data.
+                $this->data = ['name' => $this->name, 'custom_id' => $customId, 'type' => $type,
+                    'value1' => $value[1], 'value2' => $value[2], 'value3' => $value[3],
+                    'value4' => $value[4], 'value5' => $value[5], 'value6' => $value[6],
+                    'updated_at' => $this->date];
+
+                if($process === 'insert')
+                {
+                    $this->data['created_at'] = $this->date;
+                }
+
+                if($process === 'update')
+                {
+                    $this->data2 = ['id' => $this->id];
+                }
+                break;
+
             default:
                 die('Illegal request!');
                 break;

@@ -183,7 +183,28 @@ class Content extends \framework\parents\Controller
                 ];
                 break;
 
+            /***** Handle to gets all custom metas data. *****/
+            case 'metas':
+                $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $data = $this->model->Meta->clause('ORDER BY id DESC')->get();
+
+                $this->_dieOnNull($data, '<p><i>You have no custom metas.</i></p>');
+
+                $data = $this->pagination->data($data, 10);
+                $pagination = $this->pagination->pagination($data, 10, $page);
+                $data = $this->pagination->current($data, $page);
+                $datas = [
+                    'all' => $data,
+                    'pagination' => $pagination,
+                    'uri' => [
+                        'edit' => $this->uri->edit_meta,
+                        'delete' => $this->uri->delete_meta,
+                    ],
+                ];
+                break;
+
             default:
+                die('Illegal content!');
                 break;
         }
 
