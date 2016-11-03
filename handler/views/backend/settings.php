@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php require_once $paths->get('layouts') . '/metas.php'; ?>
+
+
+
+        <?php require_once $path->layouts . '/metas.php'; ?>
+
+
+
     </head>
     <style media="screen">
 
     </style>
     <body>
-        <?php require_once $paths->get('layouts') . '/panel.php'; ?>
-        <?php require_once $paths->get('layouts') . '/notice.php'; ?>
+
+
+
+        <?php require_once $path->layouts . '/panel.php'; ?>
+        <?php require_once $path->layouts . '/notice.php'; ?>
+
+
+
         <div id="parent">
             <div id="child">
                 <div id="settings-box" class="add-box">
@@ -30,7 +42,13 @@
                 </div>
             </div>
         </div>
-        <?php require_once $paths->get('layouts') . '/footer.php'; ?>
+
+
+
+        <?php require_once $path->layouts . '/footer.php'; ?>
+
+
+
     </body>
     <script type="text/javascript">
 

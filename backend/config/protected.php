@@ -19,31 +19,11 @@
     | You can set more than one protected_rule.
     */
     'protected_rule' => [
-
         'login' => [
             'on_false' => [
-                'controller' => 'Example',
-                'method' => 'protected'
+                'view' => 'auth/anonymous',
             ],
         ],
-        // Example:
-        // 'login' => [
-        //     // Will be redirected back to home.
-        //     'on_false' => '/',
-        // ],
-        // 'login' => [
-        //     // Will be redirected to controller (Wrong).
-        //     'on_false' => [
-        //         'controller' => 'Example',
-        //         'method' => 'test3',
-        //     ],
-        // ],
-        // 'login' => [
-        //     'on_false' => [
-        //         // Will be redirected to view (viewName).
-        //         'view' => 'viewName'
-        //     ],
-        // ],
     ],
 
 ];

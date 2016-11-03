@@ -19,8 +19,9 @@ class Welcome extends \framework\parents\Controller
     */
     public function login()
     {
-        $paths = new \controller\config\Path;
+        $path = new \controller\config\Path;
+        $uri = new \controller\config\Uri;
 
-        return $this->LOAD_VIEW('auth/login', compact('paths'));
+        return $this->LOAD_VIEW('auth/login', compact('path', 'uri'));
     }
 }
