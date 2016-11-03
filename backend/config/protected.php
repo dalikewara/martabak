@@ -19,7 +19,7 @@
     | You can set more than one protected_rule.
     */
     'protected_rule' => [
-        'login' => [
+        'protected' => [
             'on_false' => [
                 'view' => 'auth/anonymous',
             ],

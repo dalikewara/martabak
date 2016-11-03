@@ -19,9 +19,18 @@ class Welcome extends \framework\parents\Controller
     */
     public function login()
     {
-        $path = new \controller\config\Path;
-        $uri = new \controller\config\Uri;
+        // We checking for Protected Rule data first. If the user already has it,
+        // then we will redirected to main page.
+        if($this->CHECK_RULE('protected'))
+        {
+            header('Location: /');
+        }
+        else
+        {
+            $path = new \controller\config\Path;
+            $uri = new \controller\config\Uri;
 
-        return $this->LOAD_VIEW('auth/login', compact('path', 'uri'));
+            return $this->LOAD_VIEW('auth/login', compact('path', 'uri'));
+        }
     }
 }

@@ -82,13 +82,6 @@
         </style>
     </head>
     <body>
-
-
-
-        <?php require_once $path->layouts . '/notice.php'; ?>
-
-
-
         <div id="parent">
             <div id="child" class="L-box-1">
                 <div class"child-inner">
@@ -97,13 +90,23 @@
                 </div>
                 <div class="child-inner">
                     <form id="form-log-in" method="POST" action="<?php echo $uri->login . '/process'; ?>">
-                        <input class="L-input-1-s" type="text" name="user" placeholder="Enter your username...">
+                        <input class="L-input-1-s" type="text" name="username" placeholder="Enter your username...">
                         <input class="L-input-1-s" type="password" name="password" placeholder="Enter your password...">
                         <input type="hidden" name="__token" value="token here">
                         <button id="btn-log-in" class="L-button-4-s"><i class="fa fa-sign-in" aria-hidden="true"></i> Log in</button>
                     </form>
                 </div>
-                <br>
+
+
+
+                <?php if(isset($message) AND !is_null($message)): ?>
+                    <p style="color:red"><?php echo $message; ?></p>
+                <?php else: ?>
+                    <br>
+                <?php endif; ?>
+
+
+
                 <div id="footer" class="child-inner L-footer-1">
                     <div id="footer-inner">
                         <div id="footer-child-left" class="footer-child">

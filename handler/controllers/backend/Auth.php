@@ -20,37 +20,75 @@ class Auth extends \framework\parents\Controller
     }
 
     /**
-    * @return   view   backend/dashboard
+    * This will validating user data for log in and creating new Protected Rule
+    * (protected) data.
+    *
+    * @return   mixed
     */
     public function login()
     {
+        // Prepared variables
         $getBack = function($message = null)
         {
-            $this->LOAD_VIEW('auth/login', compact('message'));
+            $uri = $this->uri;
+            $path = $this->path;
+
+            $this->LOAD_VIEW('auth/login', compact('message', 'uri', 'path'));
         };
-        $username = isset($_POST['username']) ? $_POST['username'] : die($getBack());
-        $password = isset($_POST['password']) ? $_POST['password'] : die($getBack());
+        $username = (isset($_POST['username']) AND !empty($_POST['username']))
+            ? $_POST['username'] : die($getBack('Unknown username data!'));
+        $password = (isset($_POST['password']) AND !empty($_POST['password']))
+            ? $_POST['password'] : die($getBack('Unknown password data!'));
 
-        // Data validation...
-
-        // Comparing data
-        if(count($this->model->User->select('username')->clause('WHERE username=:username')
-        ->bindParams(['username' => $username])->get(1)) > 0 AND count($this->model->User->select(
-        'password')->clause('WHERE password=:password')->bindParams(['password' => $password])->get(1)) > 0)
+        // Data validation.
+        if(!$this->validation->username($username))
         {
+            die($getBack('Wrong username format!'));
+        }
+
+        if(!$this->validation->password($password))
+        {
+            die($getBack('Wrong password format!'));
+        }
+
+        // If the data passed the validation, then we will generate new valid data from Database
+        // based on the user data.
+        $data = $this->model->User->clause('WHERE username=:username AND password=:password')
+            ->bindParams(['username' => $username, 'password' => md5($password)])->get(1);
+
+        // Checking for valid data.
+        if(count($data) > 0)
+        {
+            // This variable will be passed into Protected Rule.
+            $protected = [
+                'id' => $data[0]->id,
+                'username' => $data[0]->username,
+                'fullname' => $data[0]->fullname,
+                'email' => $data[0]->email
+            ];
+
+            // Set up Protected Rule data.
+            $this->SET_RULE('protected', $protected);
+            // User that logged in is redirected to backend
             header('Location: ' . $this->uri->backend);
         }
         else
         {
-            $getBack('Username or password doens\'t match.');
+            // If user send invalid data.
+            $getBack('Username or password doesn\'t match.');
         }
     }
 
     /**
-    * @return   view   backend/dashboard
+    * This will destroy an existing (protected) Protected Rule data.
+    *
+    * @return   mixed
     */
     public function logout()
     {
-        // $this->DESTROY_RULE('protected');
+        // Destroy Protected Rule data.
+        $this->DESTROY_RULE('protected');
+        // Redirecting user back to main page.
+        header('Location: /');
     }
 }

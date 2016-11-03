@@ -13,7 +13,7 @@ $uri = new \controller\config\Uri;
 // List of backend uris.
 $this->request('GET / @Welcome::home');
 $this->request('GET ' . $uri->login . ' @Welcome::login');
-$this->request('GET ' . $uri->logout . ' @Welcome::logout !!protected');
+$this->request('GET ' . $uri->logout . ' @backend\Auth::logout !!protected');
 $this->request('GET ' . $uri->backend . ' @backend\Welcome::dashboard !!protected');
 $this->request('GET ' . $uri->backend . '/{content} @backend\Welcome::contents !!protected');
 $this->request('GET ' . $uri->backend . '/get/content/{content} @backend\Welcome::preview !!protected');
