@@ -96,12 +96,12 @@
                     <p class="L-c-smokeBlack">You have full control of your own website, and it's going to be easy to develop that make you love it.</p>
                 </div>
                 <div class="child-inner">
-                    <form id="form-log-in">
+                    <form id="form-log-in" method="POST" action="<?php echo $uri->login . '/process'; ?>">
                         <input class="L-input-1-s" type="text" name="user" placeholder="Enter your username...">
                         <input class="L-input-1-s" type="password" name="password" placeholder="Enter your password...">
                         <input type="hidden" name="__token" value="token here">
+                        <button id="btn-log-in" class="L-button-4-s"><i class="fa fa-sign-in" aria-hidden="true"></i> Log in</button>
                     </form>
-                    <button id="btn-log-in" class="L-button-4-s"><i class="fa fa-sign-in" aria-hidden="true"></i> Log in</button>
                 </div>
                 <br>
                 <div id="footer" class="child-inner L-footer-1">
