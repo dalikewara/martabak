@@ -24,6 +24,9 @@ class Process
         $this->validProcess = ['insert', 'update', 'delete'];
         $this->fileOrg = ['page', 'controller', 'layout', 'landing'];
         $this->name = $this->index = $this->id = null;
+        
+        // Checking for valid user based on Protected Rule data.
+        
     }
 
     /**

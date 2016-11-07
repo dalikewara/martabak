@@ -75,13 +75,7 @@
 
 
                         <textarea id="code" name="name" cols="10" rows="20"><?php echo $data; ?></textarea>
-                        <div id="landing-loading-parent">
-                            <div id="landing-loading-child"></div>
-                            <div id="landing-loading-text">
-                                <p>Loading content... Please wait...</p>
-                            </div>
-                        </div>
-                        <button id="preview-button" class="L-button-3-s" value="<?php echo $uri->custom_preview; ?>"><i class="fa fa-eye" aria-hidden="true"></i> Save changes</button>
+                        <button id="save-button" class="L-button-3-s" valUrl="<?php echo $uri->{'handle_content_' . $get}; ?>"><i class="fa fa-eye" aria-hidden="true"></i> Save changes</button>
                         <button id="preview-button" class="L-button-3-s" value="<?php echo $uri->custom_preview; ?>"><i class="fa fa-eye" aria-hidden="true"></i> Preview</button>
                         <iframe id="preview-frame" class="L-box-1" src="<?php echo $uri->preview; ?>"></iframe>
                     </div>
@@ -109,6 +103,13 @@
         {
             Petis('#preview-frame').attr('src', Petis(this).attr('value') + '?data='
                 + Petis({encode: editor.getValue()}));
+        });
+        
+        // Save
+        Petis('#save-button').on('click', function()
+        {
+            ajax(Petis(this).attr('valUrl'), 'content=' + Petis({encode: editor.getValue()}),
+                'All changes are saved successfuly!');
         });
     </script>
 </html>

@@ -28,7 +28,7 @@ class Handler extends \framework\parents\Controller
     }
 
     /**
-    * Handle to updatecontents
+    * Handle to update contents
     *
     * @param    string   $content
     * @return   mixed

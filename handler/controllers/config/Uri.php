@@ -84,6 +84,11 @@ class Uri
             'all_metas' => 'all/metas',
             'all_notes' => 'all/notes',
             'all_logs' => 'all/logs',
+            // Landing
+            'handle_content_homepage-landing' => 'process/landing/content/homepage',
+            'handle_status_homepage-landing' => 'process/landing/status/homepage',
+            'handle_content_construction-landing' => 'process/landing/content/construction',
+            'handle_status_construction-landing' => 'process/landing/status/construction',
         ];
     }
 

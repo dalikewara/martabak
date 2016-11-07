@@ -1,8 +1,7 @@
 <?php
 
 // Testing
-// $model = new \model\User;
-// $model->create();
+// $model = new \controller\config\Model;
 // die;
 
 // Martabak needs the following class to create dinamically backend routes.
@@ -27,4 +26,6 @@ $this->request('GET ' . $uri->backend . '/all/{content} @backend\Content::load !
 $this->request('POST ' . $uri->backend . '/process/create/{content} @backend\Handler::create !!protected');
 $this->request('POST ' . $uri->backend . '/process/edit/{content} @backend\Handler::update !!protected');
 $this->request('POST ' . $uri->backend . '/process/delete/{content} @backend\Handler::delete !!protected');
+$this->request('POST ' . $uri->backend . '/process/landing/content/{content} @backend\Landing::handler !!protected');
+$this->request('POST ' . $uri->backend . '/process/landing/status/{content} @backend\Landing::status !!protected');
 $this->request('POST ' . $uri->login . '/process @backend\Auth::login');

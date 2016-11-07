@@ -55,8 +55,8 @@ class Welcome extends \framework\parents\Controller
         if($content === 'landing' AND isset($_GET['template']) AND in_array($_GET['template'], $landings))
         {
             $data = htmlspecialchars(file_get_contents($this->path->landings_storage . '/' .
-                $this->model->Landing->select('filename')->clause('WHERE name=:name')
-                ->bindParams(['name' => $_GET['template']])->get(1)[0]->filename));
+                $this->model->Landing->select('filename')->clause('WHERE filename=:name')
+                ->bindParams(['name' => md5($_GET['template']) . '.php'])->get(1)[0]->filename));
         }
 
         return Parent::LOAD_VIEW($this->uri->{'_' . $content}[1], compact('path', 'uri', 'data', 'landings'));
