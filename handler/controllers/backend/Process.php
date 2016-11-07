@@ -151,7 +151,7 @@ class Process
     * @param    string   $content
     * @return   string
     */
-    public function do($post, $content, $process = false)
+    public function init($post, $content, $process = false)
     {
         // When unknown process occurs.
         if(!in_array($process, $this->validProcess))

@@ -24,7 +24,7 @@ class Handler extends \framework\parents\Controller
     public function create($content)
     {
         // Do the process
-        $this->process->do($this->post, $content, 'insert');
+        $this->process->init($this->post, $content, 'insert');
     }
 
     /**
@@ -36,7 +36,7 @@ class Handler extends \framework\parents\Controller
     public function update($content)
     {
         // Do the process
-        $this->process->do($this->post, $content, 'update');
+        $this->process->init($this->post, $content, 'update');
     }
 
     /**
@@ -48,6 +48,6 @@ class Handler extends \framework\parents\Controller
     public function delete($content)
     {
         // Do the process
-        $this->process->do($this->post, $content, 'delete');
+        $this->process->init($this->post, $content, 'delete');
     }
 }
