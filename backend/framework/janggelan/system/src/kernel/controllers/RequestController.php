@@ -102,7 +102,7 @@ class RequestController extends Blueprint
 
                 $protected->handler($this->data->protected);
             }
-            
+
             $this->callback = $this->data->uri;
         }
         else

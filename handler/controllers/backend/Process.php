@@ -4,12 +4,12 @@ use controller\config\Model;
 use controller\config\Path;
 use tool\Validation;
 
-class Process
+class Process extends \framework\parents\Controller
 {
     // The following variables have access into this class only.
     private $model, $path, $error, $date, $data, $fileSystem, $filePath, $fileContent,
             $log, $cleanLog, $action, $table, $validation, $validProcess, $data2, $name,
-            $index, $id, $fileOrg, $oldPath;
+            $index, $id, $fileOrg, $oldPath, $cleanRouteCache;
 
     function __construct()
     {
@@ -17,16 +17,16 @@ class Process
         $this->path = new Path;
         $this->validation = new Validation;
         $this->date = date('Y-m-d') . ' ' . date('H:i:s');
-        $this->cleanLog = false;
+        $this->cleanLog = $this->cleanRouteCache = false;
         $this->data = $this->data2 = $this->log = [];
         $this->fileSystem = $this->filePath = $this->fileContent = $this->table =
             $this->oldPath = null;
         $this->validProcess = ['insert', 'update', 'delete'];
         $this->fileOrg = ['page', 'controller', 'layout', 'landing'];
         $this->name = $this->index = $this->id = null;
-        
+
         // Checking for valid user based on Protected Rule data.
-        
+
     }
 
     /**
@@ -130,6 +130,12 @@ class Process
         elseif($this->fileSystem === 'rename')
         {
             rename($this->oldPath, $this->filePath);
+        }
+
+        // Check if system needs to delete cache of request.
+        if($this->cleanRouteCache)
+        {
+            $this->CLEAN_ROUTE_CACHES();
         }
 
         // If the content request to system that logs data should be cleaned permanently,
@@ -298,6 +304,7 @@ class Process
 
                 $this->filePath = $file;
                 $this->fileContent = $content;
+                $this->cleanRouteCache = true;
                 break;
 
             /***** This will handle to create, edit, and delete a new controller. *****/
@@ -362,6 +369,7 @@ class Process
                     die('Unknown method data!');
                 $target = isset($post['target']) ? $post['target'] :
                     die('Unknown target data!');
+                $system = isset($post['system']) ? 1 : 0;
 
                 // Route prefix and uri can't be empty
                 empty($this->name) ? die('Route prefix cannot be empty!') : true;
@@ -370,7 +378,7 @@ class Process
                 // Validation here...
 
                 // Generating data.
-                $this->data = ['prefix' => $this->name, 'uri' => $uri, 'system' => 0,
+                $this->data = ['prefix' => $this->name, 'uri' => $uri, 'system' => $system,
                     'method' => $method, 'target' => $target, 'updated_at' => $this->date];
 
                 if($process === 'insert')
@@ -382,6 +390,8 @@ class Process
                 {
                     $this->data2 = ['id' => $this->id];
                 }
+
+                $this->cleanRouteCache = true;
                 break;
 
             /***** This will handle to create, edit, and delete a new layout. *****/

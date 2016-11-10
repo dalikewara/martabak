@@ -21,7 +21,7 @@ class Welcome extends \framework\parents\Controller
              file_put_contents($path->landings_storage . '/' . $landing->filename,
                 'This is homepage');
         }
-        
+
         // Checking for homepage landing status.
         // If it exists but status isn't 1, then we will redirect it
         // to construction landing.
@@ -39,7 +39,7 @@ class Welcome extends \framework\parents\Controller
                 file_put_contents($path->landings_storage . '/' . md5(
                     'construction-landing') . '.php', 'This is construction');
             }
-            
+
             return Parent::LOAD_VIEW('/storages/landings/' . md5(
                 'construction-landing'));
         }

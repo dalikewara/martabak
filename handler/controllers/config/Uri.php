@@ -34,6 +34,7 @@ class Uri
             '_landing' => ['landing', 'backend/landing'],
             '_assets_management' => ['assets-management', 'backend/assets-management'],
             '_logs' => ['logs', 'backend/logs'],
+            '_storage_page' => '/storages/pages',
             // Custom
             'register_route' => 'route?action=register',
             'add_layout' => 'layout?action=add',

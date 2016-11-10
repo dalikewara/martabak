@@ -1,16 +1,25 @@
 <?php
 
-// Testing
-// $model = new \controller\config\Model;
-// die;
-
 // Martabak needs the following class to create dinamically backend routes.
 // Some default backend routes (/backend, /login, /logout) can be changed
 // by user on the setting page.
 $uri = new \controller\config\Uri;
+$model = new \controller\config\Model;
 
 // List of backend uris.
 $this->request('GET / @Welcome::home');
+
+// Generating user-defined uris.
+array_walk($model->Page->where(['status' => 1])->get(), function($data) use($uri)
+{
+    $this->request('GET /' . $data->slug . ' (' . $uri->{'_storage_page'} . '/'
+        . str_replace('.php', '', $data->filename) . ')');
+});
+array_walk($model->Route->where(['system' => 0])->get(), function($data)
+{
+    $this->request($data->method . ' ' . $data->uri . ' ' . $data->target);
+});
+
 $this->request('GET ' . $uri->login . ' @Welcome::login');
 $this->request('GET ' . $uri->logout . ' @backend\Auth::logout !!protected');
 $this->request('GET ' . $uri->backend . ' @backend\Welcome::dashboard !!protected');
