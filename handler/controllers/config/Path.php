@@ -32,6 +32,7 @@ class Path
         // This contains paths that used 'view'
         $this->view = [
             'layouts' => 'layouts',
+            'extended' => 'backend/extended',
         ];
     }
 

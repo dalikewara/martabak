@@ -84,6 +84,9 @@ class Uri
             'all_metas' => 'all/metas',
             'all_notes' => 'all/notes',
             'all_logs' => 'all/logs',
+            // Toolkit
+            'toolkit_layout' => 'all/toolkit/layouts',
+            'toolkit_route' => 'all/toolkit/routes',
             // Landing
             'handle_content_homepage-landing' => 'process/landing/content/homepage',
             'handle_status_homepage-landing' => 'process/landing/status/homepage',

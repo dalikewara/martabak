@@ -20,6 +20,7 @@ $this->request('GET ' . $uri->backend . '/get/content/{content} @backend\Welcome
 // This is url to load all items of contents.
 // In Martabak, each items called into document element by AJAX.
 $this->request('GET ' . $uri->backend . '/all/{content} @backend\Content::load !!protected');
+$this->request('GET ' . $uri->backend . '/all/toolkit/{content} @backend\Toolkit::load !!protected');
 
 // The following uris is used for backend processes like edit, delete,
 // add, etc.

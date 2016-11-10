@@ -1,328 +1,157 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <title>Dali Kewara</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    
-    
-        <style>
+        <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie" rel="stylesheet">
+        <link href="/assets/main/plugins/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
+        <style media="screen">
             body {
                 width: 100%;
                 margin: 0;
+                min-height: 100%;
                 font-family: "Raleway", sans-serif;
                 line-height: 1.5;
-                font-size: 14px;
-                color: rgb(100, 100, 100);
+                font-size: 16px;
+                color: rgb(208, 208, 208);
+                background: rgb(53, 53, 53);
+                transition: all 0.2s;
             }
             a:link {
-                color: rgb(30, 88, 199);
+                color: rgb(226, 65, 80);
+                text-shadow: 0 0 10px rgba(0, 0, 0, 1);
             }
             a:visited {
-                color: rgb(30, 88, 199);
+                color: rgb(226, 65, 80);
+                text-shadow: 0 0 10px rgba(0, 0, 0, 1);
             }
             a:hover {
-                color: rgb(12, 57, 143);
+                color: rgb(226, 65, 80);
                 text-decoration: none;
             }
             a:active {
-                color: rgb(30, 88, 199);
+                color: rgb(226, 65, 80);
+                text-shadow: 0 0 10px rgba(0, 0, 0, 1);
             }
             #parent {
+
             }
             #child {
-            }
-            #panel {
-                width: 100%;
-                height: 50px;
-                margin-bottom: 10px;
-            }
-            #panel-inner {
-                display: block;
-                padding: 20px 60px;
-            }
-            #panel-inner-right span {
-                margin-left: 20px;
-            }
-            #header {
-                width: 100%;
-                margin-bottom: 40px;
-                color: rgb(100, 100, 100);
-                background-image: url("code.png");
-                background-position: center;
-                background-size: cover;
-                background-attachment: fixed;
-                /*text-shadow: 0 0 20px rgb(200, 200, 200);*/
-            }
-            #header-inner {
-                width: 500px;
-                height: 20%;
-                padding: 60px;
-            }
-            #header-inner h1 {
-                font-size: 3em;
-                background: rgba(255, 255, 255, 0.8);
-                padding: 10px 20px;
-            }
-            #header-inner h2 {
-                background: rgba(255, 255, 255, 0.8);
-                padding: 10px 20px;
+                margin: auto;
+                width: 900px;
             }
             #content {
-                width: 100%;
-                margin: 20px 0 40px;
+
             }
             #content-inner {
-                padding: 0 60px;
-                display: flex;
+
             }
-            #who {
-                width: 100%;
-                margin: 20px 0 0;
-                background-image: url('pic2.png');
-                background-size: cover;
-                background-position: center;
-                background-attachment: fixed;
-                height: 100vh;
-                text-align: right;
-                color: rgb(250, 250, 250);
-                text-shadow: 0 0 40px rgb(255, 255, 255);
+            #content-inner h1 {
+                margin: 0 0 40px;
+                font-size: 6em;
+                margin: 0;
             }
-            #who-inner {
-                width: 600px;
-                font-size: 24px;
-                padding: 5% 80px 10% 0;
+            #content-inner h2 {
+                margin: -40px 0 60px;
+                font-size: 2em;
+            }
+            #content-inner p {
+                padding: 0 20%;
+            }
+            #item {
             }
             #footer {
-                width: 100%;
-                padding-bottom: 20px;
-                /*color: rgb(128, 19, 10);*/
-            }
-            #footer-inner {
-                display: block;
-                padding-right: 80px;
-                /*text-shadow: 0 0 40px rgb(0, 0, 0);*/
-            }
-            .content {
-            }
-            .content-inner {
-                padding: 0 40px;
+                color: rgb(100, 100, 100);
+                text-shadow: 0 0 1px rgba(0, 0, 0, 1);
                 text-align: center;
             }
-            .left {
-                float: left;
+            .inner-parent {
+                padding: 15px 40px;
             }
-            .right {
-                float: right;
+            .inner-child {
+                padding: 10px;
+            }
+            .flex {
+                display: flex;
             }
             .full {
                 width: 100%;
             }
-            .separator {
-                color: rgb(200, 200, 200);
+            .text-center {
+                text-align: center;
             }
-            .large {
-                font-size: 30px;
+            .text-right {
+                text-align: right;
+            }
+            .sizing {
+                box-sizing: border-box;
+            }
+            .separator {
+                color: rgb(236, 236, 236);
+                background: rgb(236, 236, 236);
+            }
+            .box {
+                width: 100%;
+                background: rgb(255, 255, 255);
+                overflow: auto;
+                box-shadow: 0 0 1px rgba(0, 0, 0, 1);
+                padding: 10px;
+                font-size: 12px;
             }
             .items {
-                padding: 0 10px;
-                border-bottom: 1px solid rgb(200, 200, 200);
-                transition: all 0.2s;
+                /*border-bottom: 1px solid rgb(230, 230, 230);*/
+                margin-right: 15px;
                 cursor: pointer;
-                text-align: left;
+                transition: all 0.2s;
             }
             .items:hover {
-                color: rgb(0, 0, 0);
-                border-bottom: 1px solid rgb(0, 0, 0);
+                color: rgb(226, 65, 80);
+            }
+            .large {
+                /*font-size: 34px;*/
+            }
+            .background-image {
+				background-size: cover;
+				background-position: center;
+				/*background-attachment: fixed;*/
+				background-repeat: no-repeat;
+            }
+            .rounded-img {
+                border-radius: 50%;
+            }
+            .title {
+                font-family: 'Reenie Beanie', cursive;
+            }
+            .summary {
+                color: rgb(100, 100, 100);
+                text-shadow: 0 0 10px rgba(0, 0, 0, 1);
             }
         </style>
-        
-        
-        
     </head>
     <body>
-        <div id="parent">
+        <div id="parent" class="full">
             <div id="child">
-            
-            
-            
-                <!-- Start panel -->
-                <div id="panel">
-                    <div id="panel-inner">
-                        <div id="panel-inner-left" class="left">
-                            <span>Logo here...</span>
-                        </div>
-                        <div id="panel-inner-right" class="right">
-                            <span>Contents</span>
-                            <span>Who am I?</span>
-                            <span>Services</span>
-                            <span>Information</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- End panel -->
-            
-            
-            
-                <!-- Start header -->
-                <div id="header">
-                    <div id="header-inner">
-                        <h1>Don't be worry, just feel FREE with codes.</h1>
-                        <h2>As you know, they are filled with unexpected things.</h2>
-                    </div>
-                </div>
-                <!-- End header -->
-                
-                
-                
                 <!-- Start content -->
                 <div id="content">
-                    <div id="content-inner">
-                    
-                    
-                    
-                        <!-- Start project -->
-                        <div id="project" class="content full">
-                            <div id="project-inner" class="content-inner">
-                                <h3>Latest projects</h3>
-                                <div class="items">
-                                    <p>
-                                        <strong>Petis</strong> :
-                                        A jehfrewtkjb
-                                    </p>
-                                </div>
-                                <div class="items">
-                                    <p>Lodeh</p>
-                                </div>
-                                <div class="items">
-                                    <p>Martabak</p>
-                                </div>
-                                <div class="items">
-                                    <p>Janggelan</p>
-                                </div>
-                                <p><a href="#">Watch all projects...</a></p>
-                            </div>
-                        </div>
-                        <!-- End project -->
-                        
-                        
-                        
-                        <!-- Start post -->
-                        <div id="post" class="content full">
-                            <div id="post-inner" class="content-inner">
-                                <h3>Latest posts</h3>
-                                <div class="items">
-                                    <p>
-                                        <strong><a href="#">This is my first post</a></strong>
-                                        <br>
-                                        <span>This is description defjrhwtf rjgbre gtrkejte kgje ghket hktjrhyktjy...</span>
-                                        <br>
-                                        <span>00-00-0000 00:00:00</span>
-                                    </p>
-                                </div>
-                                <div class="items">
-                                    <p>
-                                        <strong><a href="#">This is my first post</a></strong>
-                                        <br>
-                                        <span>This is description defjrhwtf rjgbre gtrkejte kgje ghket hktjrhyktjy...</span>
-                                        <br>
-                                        <span>00-00-0000 00:00:00</span>
-                                    </p>
-                                </div>
-                                <div class="items">
-                                    <p>
-                                        <strong><a href="#">This is my first post</a></strong>
-                                        <br>
-                                        <span>This is description defjrhwtf rjgbre gtrkejte kgje ghket hktjrhyktjy...</span>
-                                        <br>
-                                        <span>00-00-0000 00:00:00</span>
-                                    </p>
-                                </div>
-                                <div class="items">
-                                    <p>
-                                        <strong><a href="#">This is my first post</a></strong>
-                                        <br>
-                                        <span>This is description defjrhwtf rjgbre gtrkejte kgje ghket hktjrhyktjy...</span>
-                                        <br>
-                                        <span>00-00-0000 00:00:00</span>
-                                    </p>
-                                </div>
-                                <div class="items">
-                                    <p>
-                                        <strong><a href="#">This is my first post</a></strong>
-                                        <br>
-                                        <span>This is description defjrhwtf rjgbre gtrkejte kgje ghket hktjrhyktjy...</span>
-                                        <br>
-                                        <span>00-00-0000 00:00:00</span>
-                                    </p>
-                                </div>
-                                <p><a href="#">Browse all posts...</a></p>
-                            </div>
-                        </div>
-                        <!-- End post -->
-                        
-                        
-                        
-                        <!-- Start commits -->
-                        <div id="commit" class="content full">
-                            <div id="commit-inner" class="content-inner">
-                                <h3>Latest commits history</h3>
-                            </div>
-                        </div>
-                        <!-- End commits -->
-                        
-                        
-                        
+                    <div id="content-inner" class="text-center">
+                        <br>
+                        <h1 class="title">WELCOME</h1>
+                        <h2 class="title">THIS IS YOUR HOMEPAGE</h2>
+                        <p class="summary"><small>
+                            Now, you just have to start <strong class="large">designing your page</strong>, and build your own page system website <strong class="large">by coding</strong>.
+                            Yes, Martabak is <strong class="large">not drag & drop</strong> website builder, everything in here is <strong class="large">cover with codes</strong>. Don't be worried, you'll enjoy it.
+						</small></p>
+						<br>
+                        <!-- Start footer -->
+                        <p id="footer">
+                            <small>2016 @ Martabak</small>
+                        </p>
+                        <!-- End footer -->
                     </div>
                 </div>
                 <!-- End content -->
-                
-                
-                
-                 <!-- Start service -->
-                <div id="service">
-                    <div id="service-inner">
-                    </div>
-                </div>
-                <!-- End service -->
-                
-                
-                
-                <!-- Start information -->
-                <div id="information">
-                    <div id="information-inner">
-                    </div>
-                </div>
-                <!-- End information -->
-                
-                
-                
-                <!-- Start whoAmI
-                <div id="who">
-                    <div id="who-inner" class="right">
-                        <p>
-                            /**<i>                            
-                            An introvert who <strong class="large">love to writing</strong>, especially if he <strong class="large">did a journey</strong> first.
-                            Sometimes he <strong class="large">going to nature</strong> or some places that could make him smelling fresh air.
-                            This guy also interested everything about <strong class="large">computer and programming</strong>. He follows
-                            the <strong class="large">Naruto Shippuden</strong> and the old edition of <strong class="large">Opera Van Java</strong> (not the new one).
-                            </i>*/
-                        </p>
-                    </div>
-                    <!--Start footer
-                    <div id="footer" class="right">
-                        <div id="footer-inner">
-                            <span>2016 &copy; DALIKEWARA</span>
-                            <br>
-                            <span>POWERED BY <a href="https://www.github.com/dalikewara/martabak">MARTABAK</a> WEBSITE MANAGER</span>
-                        </div>
-                    </div>
-                    <!-- End footer
-                </div>
-                End whoAmI -->
-               
-               
-                          
             </div>
         </div>
     </body>

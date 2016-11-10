@@ -49,6 +49,8 @@ class Welcome extends \framework\parents\Controller
     {
         $path = $this->path;
         $uri = $this->uri;
+        $layouts = $this->model->Layout->get();
+        $routes = $this->model->Route->get();
         $data = null;
         $landings = ['homepage-landing', 'construction-landing'];
 
@@ -59,7 +61,8 @@ class Welcome extends \framework\parents\Controller
                 ->bindParams(['name' => md5($_GET['template']) . '.php'])->get(1)[0]->filename));
         }
 
-        return Parent::LOAD_VIEW($this->uri->{'_' . $content}[1], compact('path', 'uri', 'data', 'landings'));
+        return Parent::LOAD_VIEW($this->uri->{'_' . $content}[1], compact('path',
+            'uri', 'data', 'landings', 'layouts', 'routes'));
     }
 
     /**

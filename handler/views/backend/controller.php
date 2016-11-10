@@ -39,6 +39,13 @@
                             <form id="controller-form" action="<?php echo ($get === 'edit') ? $uri->edit_controller : $uri->create_controller; ?>">
                                 <label for="">Controller name (40):</label>
                                 <input id="controller-name" class="L-input-1-s inputs" type="text" name="name" placeholder="Enter name here..." maxlength="40">
+
+
+
+                                <?php require_once $path->layouts . '/toolkit.php'; ?>
+
+
+                                
                                 <textarea id="code" class="L-textarea-1-s inputs" name="content">// Write your code here...</textarea>
                                 <textarea id="controller-comment" class="L-textarea-1-s inputs" name="comment" rows="4" placeholder="/* Enter comment here... (255) */" maxlength="255"></textarea>
                             </form>

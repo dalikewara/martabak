@@ -105,6 +105,13 @@
                         </div>
                         <div id="child-inner-right">
                             <div class="child-section">
+
+
+
+                                <?php require_once $path->layouts . '/toolkit.php'; ?>
+
+
+                                
                                 <textarea id="code" class="L-textarea-1-s inputs" name="content" placeholder="Enter note message here...">// Write your code here...</textarea>
                                 <button id="button-preview" class="L-button-3-s" type="button" name="button" value="<?php echo $uri->custom_preview; ?>">Preview</button>
                             </div>
